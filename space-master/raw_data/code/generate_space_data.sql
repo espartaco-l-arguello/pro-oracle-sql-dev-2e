@@ -75,9 +75,9 @@ orrbits.html - What is "TA" orbit class?  It appears a few times in satcat.txt.
 --#1: Manually download data and install other objects.
 --------------------------------------------------------------------------------
 
---#0A: Download and unzip this file in C:\space: http://www.planet4589.org/space/lvdb/sdb.tar.gz
+--#0A: Download and unzip this file in ~/dap/boxing/pro-oracle-sql-dev-2e/space-master: http://www.planet4589.org/space/lvdb/sdb.tar.gz
 
---#0B: Download this file and put it in C:\space\sdb.tar: http://planet4589.org/space/log/satcat.txt
+--#0B: Download this file and put it in ~/dap/boxing/pro-oracle-sql-dev-2e/space-master/raw_data: http://planet4589.org/space/log/satcat.txt
 
 --#0C: Install this file: https://raw.githubusercontent.com/VentechCMS/utilities/master/data_dump.sql
 
@@ -87,9 +87,10 @@ orrbits.html - What is "TA" orbit class?  It appears a few times in satcat.txt.
 --  This is usually the ora_dba group on windows, or the oracle users on Unix.
 --------------------------------------------------------------------------------
 
-create or replace directory sdb as 'C:\space\sdb.tar';
-create or replace directory sdb_sdb as 'C:\space\sdb.tar\sdb\';
-create or replace directory space_output_dir as 'C:\space';
+-- Linux paths (adjust to your installation directory)
+create or replace directory sdb as '/home/spart/dap/boxing/pro-oracle-sql-dev-2e/space-master/raw_data/sdb.tar';
+create or replace directory sdb_sdb as '/home/spart/dap/boxing/pro-oracle-sql-dev-2e/space-master/raw_data/sdb.tar/sdb/';
+create or replace directory space_output_dir as '/home/spart/dap/boxing/pro-oracle-sql-dev-2e/space-master';
 
 
 

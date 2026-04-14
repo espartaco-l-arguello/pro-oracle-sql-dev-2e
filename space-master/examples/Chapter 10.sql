@@ -95,7 +95,8 @@ purge dba_recyclebin;
 
 
 --Add data file.
-alter tablespace my_tablespace add datafile 'C:\APP\...\FILE_X.DBF'
+-- NOTE: Path is OS-dependent. On Linux, use something like '/u01/app/oracle/oradata/FILE_X.DBF'
+alter tablespace my_tablespace add datafile '/u01/app/oracle/oradata/FILE_X.DBF'
 size 100m
 autoextend on
 next 100m
