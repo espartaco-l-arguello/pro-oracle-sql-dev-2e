@@ -25,7 +25,7 @@ select count(*) from
 
 --Generate large amounts of data.
 create table test1(a number);
-insert into test1 select level from dual connect by level <= 100000;
+insert into test1 select level from dual connect by level <= 10;
 insert into test1 select * from test1;
 insert into test1 select * from test1;
 insert into test1 select * from test1;
@@ -243,3 +243,4 @@ from dual;
 
 --Get the name of the machine used to connect to the database.
 select sys_context('userenv', 'host') from dual;
+drop table test1;

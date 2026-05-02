@@ -36,11 +36,12 @@ CREATE TABLE ORGANIZATION
 	ORG_STOP_DATE DATE, 
 	ORG_UTF8_NAME VARCHAR(230), 
 	 CONSTRAINT ORGANIZATION_PK PRIMARY KEY (ORG_CODE)
-  
- ) ;
 
-\copy ORGANIZATION from 'c:\space\ORGANIZATION.csv' delimiter ',' csv header;
+	 ) ;
 
+	 -- NOTE: Absolute paths are preferred for psql \copy for execution reliability across environments
+	 -- Original Windows path: \copy ORGANIZATION from 'c:\space\ORGANIZATION.csv' delimiter ',' csv header;
+	 \copy ORGANIZATION from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/ORGANIZATION.csv' delimiter ',' csv header;
 
 --------------------------------------------------------------------------------
 -- PLATFORM
@@ -70,7 +71,8 @@ CREATE INDEX PLATFORM_IDX1 ON PLATFORM (PLATFORM_STATE_ORG_CODE)
 
 CREATE INDEX PLATFORM_IDX2 ON PLATFORM (PLATFORM_PARENT_ORG_CODE) 
 ;
-\copy PLATFORM from 'c:\space\PLATFORM.csv' delimiter ',' csv header;
+-- Original Windows path: \copy PLATFORM from 'c:\space\PLATFORM.csv' delimiter ',' csv header;
+\copy PLATFORM from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/PLATFORM.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -87,7 +89,8 @@ CREATE TABLE ORGANIZATION_ORG_TYPE
 	  REFERENCES ORGANIZATION (ORG_CODE) 
  ) ;
 
-\copy ORGANIZATION_ORG_TYPE from 'c:\space\ORGANIZATION_ORG_TYPE.csv' delimiter ',' csv header;
+-- Original Windows path: \copy ORGANIZATION_ORG_TYPE from 'c:\space\ORGANIZATION_ORG_TYPE.csv' delimiter ',' csv header;
+\copy ORGANIZATION_ORG_TYPE from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/ORGANIZATION_ORG_TYPE.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -118,7 +121,8 @@ CREATE TABLE SITE
 
 CREATE INDEX SITE_IDX ON SITE (STATE_ORG_CODE) 
 ;
-\copy SITE from 'c:\space\SITE.csv' delimiter ',' csv header;
+-- Original Windows path: \copy SITE from 'c:\space\SITE.csv' delimiter ',' csv header;
+\copy SITE from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/SITE.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -137,7 +141,8 @@ CREATE TABLE SITE_ORG
 	  REFERENCES ORGANIZATION (ORG_CODE) 
  ) ;
 
-\copy SITE_ORG from 'c:\space\SITE_ORG.csv' delimiter ',' csv header;
+-- Original Windows path: \copy SITE_ORG from 'c:\space\SITE_ORG.csv' delimiter ',' csv header;
+\copy SITE_ORG from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/SITE_ORG.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -152,7 +157,8 @@ CREATE TABLE LAUNCH_VEHICLE_FAMILY
   
  ) ;
 
-\copy LAUNCH_VEHICLE_FAMILY from 'c:\space\LAUNCH_VEHICLE_FAMILY.csv' delimiter ',' csv header;
+-- Original Windows path: \copy LAUNCH_VEHICLE_FAMILY from 'c:\space\LAUNCH_VEHICLE_FAMILY.csv' delimiter ',' csv header;
+\copy LAUNCH_VEHICLE_FAMILY from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/LAUNCH_VEHICLE_FAMILY.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -188,7 +194,8 @@ CREATE TABLE LAUNCH_VEHICLE
 
 CREATE INDEX LAUNCH_VEHICLE_IDX1 ON LAUNCH_VEHICLE (LV_FAMILY_CODE) 
 ;
-\copy LAUNCH_VEHICLE from 'c:\space\LAUNCH_VEHICLE.csv' delimiter ',' csv header;
+-- Original Windows path: \copy LAUNCH_VEHICLE from 'c:\space\LAUNCH_VEHICLE.csv' delimiter ',' csv header;
+\copy LAUNCH_VEHICLE from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/LAUNCH_VEHICLE.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -210,7 +217,8 @@ CREATE TABLE LAUNCH_VEHICLE_MANUFACTURER
 
 CREATE INDEX LAUNCH_VEHICLE_MANUFACT_IDX1 ON LAUNCH_VEHICLE_MANUFACTURER (LV_MANUFACTURER_ORG_CODE) 
 ;
-\copy LAUNCH_VEHICLE_MANUFACTURER from 'c:\space\LAUNCH_VEHICLE_MANUFACTURER.csv' delimiter ',' csv header;
+-- Original Windows path: \copy LAUNCH_VEHICLE_MANUFACTURER from 'c:\space\LAUNCH_VEHICLE_MANUFACTURER.csv' delimiter ',' csv header;
+\copy LAUNCH_VEHICLE_MANUFACTURER from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/LAUNCH_VEHICLE_MANUFACTURER.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -255,7 +263,8 @@ CREATE INDEX LAUNCH_IDX3 ON LAUNCH (PLATFORM_CODE)
 
 CREATE INDEX LAUNCH_IDX4 ON LAUNCH (LAUNCH_TAG) 
 ;
-\copy LAUNCH from 'c:\space\LAUNCH.csv' delimiter ',' csv header;
+-- Original Windows path: \copy LAUNCH from 'c:\space\LAUNCH.csv' delimiter ',' csv header;
+\copy LAUNCH from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/LAUNCH.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -274,7 +283,8 @@ CREATE TABLE LAUNCH_PAYLOAD_ORG
 	  REFERENCES ORGANIZATION (ORG_CODE) 
  ) ;
 
-\copy LAUNCH_PAYLOAD_ORG from 'c:\space\LAUNCH_PAYLOAD_ORG.csv' delimiter ',' csv header;
+-- Original Windows path: \copy LAUNCH_PAYLOAD_ORG from 'c:\space\LAUNCH_PAYLOAD_ORG.csv' delimiter ',' csv header;
+\copy LAUNCH_PAYLOAD_ORG from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/LAUNCH_PAYLOAD_ORG.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -293,7 +303,8 @@ CREATE TABLE LAUNCH_AGENCY
 	  REFERENCES ORGANIZATION (ORG_CODE) 
  ) ;
 
-\copy LAUNCH_AGENCY from 'c:\space\LAUNCH_AGENCY.csv' delimiter ',' csv header;
+-- Original Windows path: \copy LAUNCH_AGENCY from 'c:\space\LAUNCH_AGENCY.csv' delimiter ',' csv header;
+\copy LAUNCH_AGENCY from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/LAUNCH_AGENCY.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -325,7 +336,8 @@ CREATE TABLE SATELLITE
 
 CREATE INDEX SATELLITE_IDX1 ON SATELLITE (LAUNCH_ID) 
 ;
-\copy SATELLITE from 'c:\space\SATELLITE.csv' delimiter ',' csv header;
+-- Original Windows path: \copy SATELLITE from 'c:\space\SATELLITE.csv' delimiter ',' csv header;
+\copy SATELLITE from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/SATELLITE.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -344,7 +356,8 @@ CREATE TABLE SATELLITE_ORG
 	  REFERENCES ORGANIZATION (ORG_CODE) 
  ) ;
 
-\copy SATELLITE_ORG from 'c:\space\SATELLITE_ORG.csv' delimiter ',' csv header;
+-- Original Windows path: \copy SATELLITE_ORG from 'c:\space\SATELLITE_ORG.csv' delimiter ',' csv header;
+\copy SATELLITE_ORG from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/SATELLITE_ORG.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -369,7 +382,8 @@ CREATE TABLE ENGINE
   
  ) ;
 
-\copy ENGINE from 'c:\space\ENGINE.csv' delimiter ',' csv header;
+-- Original Windows path: \copy ENGINE from 'c:\space\ENGINE.csv' delimiter ',' csv header;
+\copy ENGINE from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/ENGINE.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -398,7 +412,8 @@ CREATE TABLE STAGE
 
 CREATE INDEX STAGE_IDX1 ON STAGE (ENGINE_ID) 
 ;
-\copy STAGE from 'c:\space\STAGE.csv' delimiter ',' csv header;
+-- Original Windows path: \copy STAGE from 'c:\space\STAGE.csv' delimiter ',' csv header;
+\copy STAGE from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/STAGE.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -429,7 +444,8 @@ CREATE INDEX LAUNCH_VEHICLE_STAGE_IDX1 ON LAUNCH_VEHICLE_STAGE (LV_ID)
 
 CREATE INDEX LAUNCH_VEHICLE_STAGE_IDX2 ON LAUNCH_VEHICLE_STAGE (STAGE_NAME) 
 ;
-\copy LAUNCH_VEHICLE_STAGE from 'c:\space\LAUNCH_VEHICLE_STAGE.csv' delimiter ',' csv header;
+-- Original Windows path: \copy LAUNCH_VEHICLE_STAGE from 'c:\space\LAUNCH_VEHICLE_STAGE.csv' delimiter ',' csv header;
+\copy LAUNCH_VEHICLE_STAGE from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/LAUNCH_VEHICLE_STAGE.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -451,7 +467,8 @@ CREATE TABLE STAGE_MANUFACTURER
 
 CREATE INDEX STAGE_MANUFACTURER_IDX1 ON STAGE_MANUFACTURER (MANUFACTURER_ORG_CODE) 
 ;
-\copy STAGE_MANUFACTURER from 'c:\space\STAGE_MANUFACTURER.csv' delimiter ',' csv header;
+-- Original Windows path: \copy STAGE_MANUFACTURER from 'c:\space\STAGE_MANUFACTURER.csv' delimiter ',' csv header;
+\copy STAGE_MANUFACTURER from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/STAGE_MANUFACTURER.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -468,7 +485,8 @@ CREATE TABLE PROPELLANT
   
  ) ;
 
-\copy PROPELLANT from 'c:\space\PROPELLANT.csv' delimiter ',' csv header;
+-- Original Windows path: \copy PROPELLANT from 'c:\space\PROPELLANT.csv' delimiter ',' csv header;
+\copy PROPELLANT from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/PROPELLANT.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -491,7 +509,8 @@ CREATE TABLE ENGINE_PROPELLANT
 
 CREATE INDEX ENGINE_PROPELLANT_IDX1 ON ENGINE_PROPELLANT (PROPELLANT_ID) 
 ;
-\copy ENGINE_PROPELLANT from 'c:\space\ENGINE_PROPELLANT.csv' delimiter ',' csv header;
+-- Original Windows path: \copy ENGINE_PROPELLANT from 'c:\space\ENGINE_PROPELLANT.csv' delimiter ',' csv header;
+\copy ENGINE_PROPELLANT from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/ENGINE_PROPELLANT.csv' delimiter ',' csv header;
 
 
 --------------------------------------------------------------------------------
@@ -513,7 +532,8 @@ CREATE TABLE ENGINE_MANUFACTURER
 
 CREATE INDEX ENGINE_MANUFACTURER_IDX1 ON ENGINE_MANUFACTURER (MANUFACTURER_ORG_CODE) 
 ;
-\copy ENGINE_MANUFACTURER from 'c:\space\ENGINE_MANUFACTURER.csv' delimiter ',' csv header;
+-- Original Windows path: \copy ENGINE_MANUFACTURER from 'c:\space\ENGINE_MANUFACTURER.csv' delimiter ',' csv header;
+\copy ENGINE_MANUFACTURER from '/home/yourusername/pro-oracle-sql-dev-2e/space-master/csv_files/ENGINE_MANUFACTURER.csv' delimiter ',' csv header;
 
 
 

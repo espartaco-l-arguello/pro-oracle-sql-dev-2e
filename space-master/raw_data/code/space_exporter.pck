@@ -586,8 +586,12 @@ procedure generate_postgres_file is
 			end loop;
 
 			--Data:
+			-- Original Windows path:
+			-- utl_file.put_line(v_handle, replace(
+			-- 	q'[\copy $TABLE_NAME$ from 'c:\space\$TABLE_NAME$.csv' delimiter ',' csv header;]'
+			-- 	, '$TABLE_NAME$', g_ordered_objects(i)));
 			utl_file.put_line(v_handle, replace(
-				q'[\copy $TABLE_NAME$ from 'c:\space\$TABLE_NAME$.csv' delimiter ',' csv header;]'
+				q'[\copy $TABLE_NAME$ from '~/pro-oracle-sql-dev-2e\$TABLE_NAME$.csv' delimiter ',' csv header;]'
 				, '$TABLE_NAME$', g_ordered_objects(i)));
 		end loop;
 

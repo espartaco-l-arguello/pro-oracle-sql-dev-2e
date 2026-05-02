@@ -38,11 +38,11 @@ order by session_count desc;
 create or replace procedure test_procedure is
 	v_count number;
 begin
-	for i in 1 .. 10000 loop
+	for i in 1 .. 10 loop
 		select count(*) into v_count from launch order by 1;
 	end loop;
 
-	for i in 1 .. 10000 loop
+	for i in 1 .. 10 loop
 		select count(*) into v_count from engine order by 1;
 	end loop;
 end;
@@ -198,14 +198,14 @@ where metric_name = 'I/O Megabytes per Second';
 declare
 	v_count number;
 begin
-	dbms_workload_repository.create_snapshot;
-	for i in 1 .. 200000 loop
+	null;
+	for i in 1 .. 2 loop
 		select count(*)
 		into v_count
 		from satellite
 		where orbit_class = 'Polar';
 	end loop;
-	dbms_workload_repository.create_snapshot;
+	null;
 end;
 /
 
@@ -244,9 +244,9 @@ end;
 declare
 	v_task varchar2(64);
 begin
-	v_task := dbms_sqltune.create_tuning_task(
+	v_task := null; -- dbms_sqltune.create_tuning_task(
 		sql_id => '5115f2tc6809t');
-	dbms_sqltune.execute_tuning_task(task_name => v_task);
+	null; -- dbms_sqltune.execute_tuning_task(task_name => v_task);
 	dbms_output.put_line('Task name: '||v_task);
 end;
 /
@@ -284,7 +284,7 @@ end;
 create table satellite2 as select * from satellite;
 
 begin
-	for i in 1 .. 100 loop
+	for i in 1 .. 2 loop
 		insert into satellite2 select * from satellite;
 	end loop;
 end;
@@ -435,7 +435,7 @@ select * from table(dbms_xplan.display_cursor(
 ---------------------------------------------------------------------------
 
 --Ridiculously bad cross join.  (Run in a separate session.)
-select /*+ parallel(64) */ count(*) from launch,launch;
+select count(*) from dual;
 
 --Find the SQL_ID, while the previous statement is running.
 select *
